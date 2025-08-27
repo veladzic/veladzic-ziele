@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Veladzic • Ziele</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/css/styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎯</text></svg>">
+  </head>
+  <body>
+    <div class="bg"></div>
+    <main class="container">
+      <section class="header">
+        <h1 class="title">Veladzic</h1>
+        <p class="subtitle">Ziele</p>
+        <a class="admin-link" href="/admin">Admin</a>
+      </section>
+
+      <section class="grid">
+        <% if (!countdowns || countdowns.length === 0) { %>
+          <div class="empty">Noch keine Countdowns. Füge sie im Admin‑Bereich hinzu.</div>
+        <% } %>
+        <% (countdowns || []).forEach(c => { %>
+          <article class="card" style="--accent:<%= c.color || '#8B5CF6' %>" data-target="<%= c.target %>">
+            <div class="card-top">
+              <div class="emoji"><%= c.emoji || '⏳' %></div>
+              <div class="meta">
+                <h2 class="card-title"><%= c.title %></h2>
+                <% if (c.description) { %>
+                  <p class="card-desc"><%= c.description %></p>
+                <% } %>
+              </div>
+            </div>
+            <div class="timer" data-target="<%= c.target %>">
+              <div class="t">
+                <span class="num" data-part="days">0</span>
+                <span class="label">Tage</span>
+              </div>
+              <div class="t">
+                <span class="num" data-part="hours">0</span>
+                <span class="label">Stunden</span>
+              </div>
+              <div class="t">
+                <span class="num" data-part="minutes">0</span>
+                <span class="label">Minuten</span>
+              </div>
+              <div class="t">
+                <span class="num" data-part="seconds">0</span>
+                <span class="label">Sekunden</span>
+              </div>
+            </div>
+            <div class="status hidden" aria-live="polite"></div>
+          </article>
+        <% }) %>
+      </section>
+    </main>
+    <script src="/public/js/main.js"></script>
+  </body>
+ </html>

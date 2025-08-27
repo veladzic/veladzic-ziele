@@ -1,0 +1,17 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Env and local config
+.env
+.env.local
+
+# Data persistence
+data/countdowns.json
+
+# OS / Editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+

@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  countdown:
+    build: .
+    container_name: lovely-countdown
+    ports:
+      - "8080:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

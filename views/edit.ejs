@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bearbeiten • Veladzic • Ziele</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/css/styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎯</text></svg>">
+  </head>
+  <body>
+    <div class="bg"></div>
+    <main class="container">
+      <section class="header">
+        <h1 class="title">Countdown bearbeiten</h1>
+        <p class="subtitle"><%= c.title %></p>
+        <a class="admin-link" href="/admin">Zurück</a>
+      </section>
+
+      <section class="panel">
+        <form class="form" method="post" action="/admin/edit/<%= c.id %>">
+          <div class="row">
+            <label>Titel</label>
+            <input name="title" value="<%- c.title %>" required />
+          </div>
+          <div class="row">
+            <label>Beschreibung</label>
+            <input name="description" value="<%- c.description || '' %>" />
+          </div>
+          <div class="row two">
+            <div>
+              <label>Datum</label>
+              <input type="date" name="targetDate" value="<%= new Date(c.target).toISOString().slice(0,10) %>" required />
+            </div>
+            <div>
+              <label>Uhrzeit</label>
+              <input type="time" name="targetTime" value="<%= new Date(c.target).toISOString().slice(11,16) %>" required />
+            </div>
+          </div>
+          <div class="row two">
+            <div>
+              <label>Emoji</label>
+              <input name="emoji" value="<%- c.emoji || '' %>" />
+            </div>
+            <div>
+              <label>Akzentfarbe</label>
+              <input type="color" name="color" value="<%- c.color || '#8B5CF6' %>" />
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn">Änderungen speichern</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+ </html>
