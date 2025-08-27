@@ -98,6 +98,11 @@ input:focus{border-color:rgba(var(--ring),.7);box-shadow:0 0 0 4px rgba(255,255,
   .timer{grid-template-columns:repeat(2,1fr)}
   .card{padding:16px}
   .num{font-size:26px}
+  /* Ensure admin action buttons remain visible on small screens */
+  .list-item{flex-wrap:wrap;align-items:flex-start}
+  .left{min-width:0;flex:1 1 auto}
+  .name{word-break:break-word}
+  .right{width:100%;justify-content:flex-end}
 }
 
 @media (max-width:380px){
